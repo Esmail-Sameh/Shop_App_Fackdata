@@ -8,10 +8,10 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int productId = ModalRoute.of(context)!.settings.arguments as int;
-    var selectedProduct = fakeData.firstWhere(
-      (element) => element!['id'] == productId,
-    );
+    // int productId = ModalRoute.of(context)!.settings.arguments as int;
+    // var selectedProduct = fakeData.firstWhere(
+    //   (element) => element!['id'] == productId,
+    // );
     return GetBuilder<HomeController>(
       init: HomeController(),
       builder: (controller) => SafeArea(
