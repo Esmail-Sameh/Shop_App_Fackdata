@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       init: HomeController(),
         builder: (controller) {
           return Scaffold(
-            body: SafeArea(
+            body: controller.isLoding?Center(child: CircularProgressIndicator()) :SafeArea(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 child: SingleChildScrollView(
@@ -119,7 +119,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             childAspectRatio: 1 / 1.4),
                         children: List.generate(
                           controller.dataList!.length,
-                              (index) => gridItem(controller.dataList![index]),
+                              (index) {
+                            ProductData product = controller.dataList![index];
+                            return gridItem(controller.dataList![index] , controller , product);
+                              },
                         ),
                       ),
                     ],
@@ -159,9 +162,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
-  Widget gridItem(ProductData model) => GestureDetector(
+  Widget gridItem(ProductData model, HomeController countroller , ProductData detileProduct) => GestureDetector(
     onTap: () {
-      Get.toNamed(DetailsScreen.routName ,arguments: model);
+      countroller.onClickItemHomeScreen(detileProduct);
       // var ProdecId = model.id;
     },
     child: Container(

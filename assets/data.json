@@ -1,7 +1,6 @@
-var fakeData =
+
  [
     {
-      "id": 1,
       "title": "Latte",
       "image": "Latte.png",
       "subTitle": "Best coffee",
@@ -9,10 +8,9 @@ var fakeData =
       "Hot coffee is a steaming beverage brewed from roasted coffee beans. The dark, aromatic liquid offers a stimulating caffeine kick and a rich, slightly bitter taste.pen_spark",
       "quantity": 0,
       "isFav": false,
-      "price": "30",
+      "price": "30"
     },
     {
-      "id": 2,
       "title": "Espresso",
       "image": "Espresso.png",
       "description":
@@ -20,10 +18,9 @@ var fakeData =
       "subTitle": "Best coffee",
       "quantity": 0,
       "isFav": false,
-      "price": "30",
+      "price": "50"
     },
     {
-      "id": 3,
       "title": "Black Coffee",
       "image": "Black Coffee.png",
       "description":
@@ -31,10 +28,9 @@ var fakeData =
       "subTitle": "Best coffee",
       "quantity": 0,
       "isFav": false,
-      "price": "30",
+      "price": "20"
     },
     {
-      "id": 4,
       "title": "Cold Coffee",
       "description":
       "Cold coffee is a steaming beverage brewed from roasted coffee beans. The dark, aromatic liquid offers a stimulating caffeine kick and a rich, slightly bitter taste.pen_spark",
@@ -42,7 +38,7 @@ var fakeData =
       "subTitle": "Best coffee",
       "quantity": 0,
       "isFav": false,
-      "price": "30",
-    },
-  ];
+      "price": "70"
+    }
+  ]
 

@@ -1,38 +1,42 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import '../../data.dart';
+
 import '../model/home_model.dart';
+import '../view/screens/details_screen.dart';
 
 class HomeController extends GetxController{
 
   @override
   void onInit() {
-    getHomeData();
+    getData();
     super.onInit();
   }
+
+
+  bool isLoding = true;
   List<ProductData>? dataList= [];
-  void getHomeData(){
-    var data = fakeData.map((elemant)=>ProductData.fromJson(elemant),).toList();
-    dataList = data;
-  }
-
-  List<ProductData> inCardProduct = [];
-  void setFavoriteMeals(int id) {
-    final existingIndex = inCardProduct.indexWhere((elemant) => elemant.id == id);
-    if (existingIndex >= 0) {
-      inCardProduct.removeAt(existingIndex);
-      print('remove');
-    } else {
-      inCardProduct.add(fakeData.firstWhere((element) => element['id'] == id) as ProductData);
-      print('add');
+  Future<void> getData()async{
+    try {
+      isLoding = true;
+      final data = await rootBundle.loadString('assets/data.json');
+      var jsonData = await jsonDecode(data) as List;
+      dataList = jsonData.map((e) => ProductData.fromJson(e),).toList();
+      isLoding = false;
+    }catch(error){
+      isLoding = true;
+      print(error.toString());
     }
-
+    isLoding = false;
+    update();
   }
 
-  bool isCard(int id) {
-    if (fakeData.any((elemant) => elemant == id)) {
-      return true;
-    }
-    return false;
+  /// onClickItemHomeScareen
+  void onClickItemHomeScreen(ProductData model){
+    Get.toNamed(DetailsScreen.routName, arguments: model);
   }
+
+
 
 }
