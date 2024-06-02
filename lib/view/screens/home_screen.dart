@@ -215,12 +215,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        countroller.addToCartHomeBtn(model.id);
+                      },
                       child: CircleAvatar(
                         radius: 15,
                         backgroundColor: Colors.orange,
                         child: Icon(
-                          Icons.add,
+                          countroller.isCartProduct(model.id) ? Icons.done :Icons.add,
                           color: Colors.white,
                         ),
                       ),
